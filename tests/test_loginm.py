@@ -4,9 +4,9 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager  # Automatically handles ChromeDriver
 import time
 
-# Configure Chrome options for normal mode (remove headless mode)
+# Configure Chrome options for headless mode
 options = Options()
-# options.add_argument('--headless')  # Remove this line to see the browser window
+options.add_argument('--headless')  # Enable headless mode
 options.add_argument('--no-sandbox')  # Disable sandbox (important for CI/CD environments)
 options.add_argument('--disable-dev-shm-usage')  # Helps with resource limitations in CI/CD
 options.add_argument('--remote-debugging-port=9222')  # Allow debugging
