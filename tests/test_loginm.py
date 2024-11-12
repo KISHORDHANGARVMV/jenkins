@@ -1,23 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service  # Import Service class
-from webdriver_manager.chrome import ChromeDriverManager  # Optional, for auto-download of ChromeDriver
 import time
 
-# Configure Chrome options for headless mode
+# Configure Chrome options for normal mode (remove headless mode)
 options = Options()
-options.add_argument('--headless')  # Run Chrome in headless mode (no GUI)
+# options.add_argument('--headless')  # Remove this line to see the browser window
 options.add_argument('--no-sandbox')  # Disable sandbox (important for CI/CD environments)
 options.add_argument('--disable-dev-shm-usage')  # Helps with resource limitations in CI/CD
 options.add_argument('--remote-debugging-port=9222')  # Allow debugging
 options.add_argument('--disable-gpu')  # Disable GPU hardware acceleration
 options.add_argument('--window-size=1920x1080')  # Set window size (important for headless)
 
-# Use the Service class to specify the chromedriver path
-service = Service(executable_path='/usr/bin/chromedriver')  # Update with your chromedriver path
-
-# Initialize the WebDriver with the Service and options
-driver = webdriver.Chrome(service=service, options=options)
+# Use the chromedriver path you mentioned
+driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=options)
 
 # Navigate to Google's homepage
 driver.get('https://www.google.com/')
